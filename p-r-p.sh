@@ -1,3 +1,5 @@
+#creates 3 namespaces box1<--->router<---->box2
+# box1 and box2 are connected by veth pairs 
 sudo ip netns add box1
 sudo ip netns add router
 sudo ip netns add box2
