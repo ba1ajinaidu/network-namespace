@@ -24,9 +24,7 @@ sudo ip netns exec router ip link set dev veth1 up
 sudo ip netns exec box2 ip link set dev veth2 up
 sudo ip netns exec router ip link set dev veth3 up
 
-
-sudo echo 1 > /proc/sys/net/ipv4/ip_forward
-sudo echo 1 > /proc/sys/net/netfilter/nf_log_all_netns
+sudo ip netns exec router sysctl -w net.ipv4.conf.all.forwarding=1
 
 sudo ip netns exec box1 ip route add default via 10.0.0.1
 sudo ip netns exec box2 ip route add default via 10.0.1.1
