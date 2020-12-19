@@ -36,3 +36,6 @@ sudo ip netns exec r2 sysctl -w net.ipv4.conf.all.forwarding=1
 
 sudo ip netns exec b1 ip route add default via 10.0.0.1
 sudo ip netns exec b2 ip route add default via 10.1.1.1
+sudo ip netns exec r1 ip route add default via 10.0.1.2
+sudo ip netns exec r2 ip route add default via 10.0.1.1
+
