@@ -1,3 +1,6 @@
+#  b1----r1----r2-----b2
+# b1 and b2 are end points ,r1 and r2 are routers
+
 #create namespaces
 sudo ip netns add b1
 sudo ip netns add b2
