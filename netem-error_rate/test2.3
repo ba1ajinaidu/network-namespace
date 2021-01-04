@@ -1,0 +1,48 @@
+sudo ip netns exec box2 tc qdisc change dev veth2 root netem loss 50% 50%
+sudo ip netns exec box2 ping -c100 10.0.0.2 > test2.3
+
+
+PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+64 bytes from 10.0.0.2: icmp_seq=1 ttl=63 time=0.084 ms
+64 bytes from 10.0.0.2: icmp_seq=2 ttl=63 time=0.169 ms
+64 bytes from 10.0.0.2: icmp_seq=3 ttl=63 time=0.179 ms
+64 bytes from 10.0.0.2: icmp_seq=4 ttl=63 time=0.123 ms
+64 bytes from 10.0.0.2: icmp_seq=8 ttl=63 time=0.187 ms
+64 bytes from 10.0.0.2: icmp_seq=10 ttl=63 time=0.136 ms
+64 bytes from 10.0.0.2: icmp_seq=11 ttl=63 time=0.163 ms
+64 bytes from 10.0.0.2: icmp_seq=12 ttl=63 time=0.122 ms
+64 bytes from 10.0.0.2: icmp_seq=15 ttl=63 time=0.089 ms
+64 bytes from 10.0.0.2: icmp_seq=16 ttl=63 time=0.150 ms
+64 bytes from 10.0.0.2: icmp_seq=17 ttl=63 time=0.163 ms
+64 bytes from 10.0.0.2: icmp_seq=20 ttl=63 time=0.132 ms
+64 bytes from 10.0.0.2: icmp_seq=27 ttl=63 time=0.269 ms
+64 bytes from 10.0.0.2: icmp_seq=31 ttl=63 time=0.100 ms
+64 bytes from 10.0.0.2: icmp_seq=32 ttl=63 time=0.123 ms
+64 bytes from 10.0.0.2: icmp_seq=35 ttl=63 time=0.158 ms
+64 bytes from 10.0.0.2: icmp_seq=37 ttl=63 time=0.138 ms
+64 bytes from 10.0.0.2: icmp_seq=41 ttl=63 time=0.128 ms
+64 bytes from 10.0.0.2: icmp_seq=42 ttl=63 time=0.139 ms
+64 bytes from 10.0.0.2: icmp_seq=43 ttl=63 time=0.164 ms
+64 bytes from 10.0.0.2: icmp_seq=57 ttl=63 time=0.144 ms
+64 bytes from 10.0.0.2: icmp_seq=59 ttl=63 time=0.158 ms
+64 bytes from 10.0.0.2: icmp_seq=60 ttl=63 time=0.178 ms
+64 bytes from 10.0.0.2: icmp_seq=61 ttl=63 time=0.143 ms
+64 bytes from 10.0.0.2: icmp_seq=64 ttl=63 time=0.156 ms
+64 bytes from 10.0.0.2: icmp_seq=65 ttl=63 time=0.116 ms
+64 bytes from 10.0.0.2: icmp_seq=66 ttl=63 time=0.284 ms
+64 bytes from 10.0.0.2: icmp_seq=67 ttl=63 time=0.143 ms
+64 bytes from 10.0.0.2: icmp_seq=69 ttl=63 time=0.141 ms
+64 bytes from 10.0.0.2: icmp_seq=70 ttl=63 time=0.169 ms
+64 bytes from 10.0.0.2: icmp_seq=74 ttl=63 time=0.177 ms
+64 bytes from 10.0.0.2: icmp_seq=75 ttl=63 time=0.067 ms
+64 bytes from 10.0.0.2: icmp_seq=77 ttl=63 time=0.191 ms
+64 bytes from 10.0.0.2: icmp_seq=79 ttl=63 time=0.139 ms
+64 bytes from 10.0.0.2: icmp_seq=83 ttl=63 time=0.129 ms
+64 bytes from 10.0.0.2: icmp_seq=88 ttl=63 time=0.184 ms
+64 bytes from 10.0.0.2: icmp_seq=93 ttl=63 time=0.217 ms
+64 bytes from 10.0.0.2: icmp_seq=94 ttl=63 time=0.250 ms
+64 bytes from 10.0.0.2: icmp_seq=98 ttl=63 time=0.141 ms
+
+--- 10.0.0.2 ping statistics ---
+100 packets transmitted, 39 received, 61% packet loss, time 101357ms
+rtt min/avg/max/mdev = 0.067/0.154/0.284/0.047 ms

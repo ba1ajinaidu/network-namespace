@@ -1,0 +1,39 @@
+sudo ip netns exec box2 tc qdisc change dev veth2 root netem loss 50%
+sudo ip netns exec box2 ping -c100 10.0.0.2 > test2.4
+
+
+PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+64 bytes from 10.0.0.2: icmp_seq=5 ttl=63 time=0.259 ms
+64 bytes from 10.0.0.2: icmp_seq=7 ttl=63 time=0.298 ms
+64 bytes from 10.0.0.2: icmp_seq=9 ttl=63 time=0.157 ms
+64 bytes from 10.0.0.2: icmp_seq=10 ttl=63 time=0.179 ms
+64 bytes from 10.0.0.2: icmp_seq=11 ttl=63 time=0.149 ms
+64 bytes from 10.0.0.2: icmp_seq=35 ttl=63 time=0.246 ms
+64 bytes from 10.0.0.2: icmp_seq=38 ttl=63 time=0.213 ms
+64 bytes from 10.0.0.2: icmp_seq=39 ttl=63 time=0.173 ms
+64 bytes from 10.0.0.2: icmp_seq=41 ttl=63 time=0.163 ms
+64 bytes from 10.0.0.2: icmp_seq=43 ttl=63 time=0.148 ms
+64 bytes from 10.0.0.2: icmp_seq=44 ttl=63 time=0.069 ms
+64 bytes from 10.0.0.2: icmp_seq=46 ttl=63 time=0.185 ms
+64 bytes from 10.0.0.2: icmp_seq=48 ttl=63 time=0.131 ms
+64 bytes from 10.0.0.2: icmp_seq=57 ttl=63 time=0.135 ms
+64 bytes from 10.0.0.2: icmp_seq=58 ttl=63 time=0.150 ms
+64 bytes from 10.0.0.2: icmp_seq=71 ttl=63 time=0.179 ms
+64 bytes from 10.0.0.2: icmp_seq=72 ttl=63 time=0.152 ms
+64 bytes from 10.0.0.2: icmp_seq=73 ttl=63 time=0.154 ms
+64 bytes from 10.0.0.2: icmp_seq=77 ttl=63 time=0.134 ms
+64 bytes from 10.0.0.2: icmp_seq=79 ttl=63 time=0.134 ms
+64 bytes from 10.0.0.2: icmp_seq=80 ttl=63 time=0.164 ms
+64 bytes from 10.0.0.2: icmp_seq=81 ttl=63 time=0.139 ms
+64 bytes from 10.0.0.2: icmp_seq=82 ttl=63 time=0.198 ms
+64 bytes from 10.0.0.2: icmp_seq=83 ttl=63 time=0.147 ms
+64 bytes from 10.0.0.2: icmp_seq=84 ttl=63 time=0.215 ms
+64 bytes from 10.0.0.2: icmp_seq=89 ttl=63 time=0.448 ms
+64 bytes from 10.0.0.2: icmp_seq=91 ttl=63 time=0.161 ms
+64 bytes from 10.0.0.2: icmp_seq=95 ttl=63 time=0.209 ms
+64 bytes from 10.0.0.2: icmp_seq=97 ttl=63 time=0.097 ms
+64 bytes from 10.0.0.2: icmp_seq=100 ttl=63 time=0.146 ms
+
+--- 10.0.0.2 ping statistics ---
+100 packets transmitted, 30 received, 70% packet loss, time 101309ms
+rtt min/avg/max/mdev = 0.069/0.177/0.448/0.069 ms
