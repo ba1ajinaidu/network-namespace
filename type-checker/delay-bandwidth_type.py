@@ -1,16 +1,18 @@
 import re
 
-def split(string):
-    r = re.sub(r'(?<=\d)(?=\D)|(?<=\D)(?=\d)', r' ', string).split()
+def split_string(string):
+    #r = re.sub(r'(?<=\d)(?=\D)|(?<=\D)(?=\d)', r' ', string).split()
+    r = re.split(r'((\[0-9].[0-9])|([a-zA-Z]+))',string)
+    #r = re.
     return r
 
 def delay_type():
-    test='85ms'
-    result=split(test)
-    delay =['s','S','ms','us','ns','ps','as','fs']
+    test='85.76ms'
+    result=split_string(test)
+    delay =['s','sec','secs','ms','msec','msecs','us','usec','usecs']
     
     print(result)
-    if(result[0].isdigit()):
+    if(result[0].replace('.','',1).isdigit()):
         if(result[1] in delay):
             print("continue normally")
             
@@ -21,12 +23,12 @@ def delay_type():
         print("usage 85ms")
         
 def bandwidth_type():
-    test1='85Mbits'
-    result1=split(test1)
-    bandwidth =['bits','kbits','Kbits','mbits','Mbits','gbits','Gbits','bps','kbps','Kbps','mbps','Mbps','gbps','Gbps']
+    test1='85mbit'
+    result1=split_string(test1)
+    bandwidth =['bit','kbit','kibit','mbit','mebit','gbit','gibit','tbit','tebit','bps','kbps','kibps','mbps','mebps','gbps','gibps','tbps','tebps']
     
     print(result1)
-    if(result1[0].isdigit()):
+    if(result1[0].replace('.','',1).isdigit()):
         if(result1[1] in bandwidth):
             print("continue normally")
             
@@ -34,7 +36,7 @@ def bandwidth_type():
             print("Please provide a proper unit(type)")
             
     else:
-        print("usage 85mbits")
+        print("usage 85mbit")
 
 delay_type()
 bandwidth_type()
