@@ -25,7 +25,7 @@ def delay_type():
 def bandwidth_type():
     test1='85mbit'
     result1=split_string(test1)
-    bandwidth =['bit','kbit','kibit','mbit','mebit','gbit','gibit','tbit','tebit','bps','kbps','kibps','mbps','mebps','gbps','gibps','tbps','tebps']
+    bandwidth =['bit','kbit','kibit','mbit','mibit','gbit','gibit','tbit','tibit','bps','kbps','kibps','mbps','mibps','gbps','gibps','tbps','tibps']
     
     print(result1)
     if(result1[0].replace('.','',1).isdigit()):
