@@ -1,52 +1,80 @@
+# SPDX-License-Identifier: GPL-2.0-only
+# Copyright (c) 2019-2020 NITK Surathkal
+
+"""APIs to check the types of attributes"""
+
 import re
 
-def split_string(string):
-    #r = re.sub(r'(?<=\d)(?=\D)|(?<=\D)(?=\d)', r' ', string).split()
-    r = re.split(r'((\[0-9].[0-9])|([a-zA-Z]+))',string)
-    #r = re.
-    res = None if len(r)==1 else r
-    return res
+class TypeChecker:
+    """ Checks for proper type of parameter and units"""
+    def __init__(self):
+        print("checking types")
+    def match_string(self, data_str):
+        """
+        Check if the given string matches the regex expression
 
-def delay_type():
-    test='85.76ms'
-    result=split_string(test)
-    delay =['s','sec','secs','ms','msec','msecs','us','usec','usecs']
-    
-    print(result)
-    
-    if(result!= None):
-        if(result[0].replace('.','',1).isdigit()):
-            if(result[1] in delay):
-                print("continue normally")
-            
-            else:
-                print("please provide a proper unit")
-            
-        else:
-            print("usage 85ms")
-            
-    else:
-            print("no unit was passed along with delay")
-        
-def bandwidth_type():
-    test1='85'
-    result1=split_string(test1)
-    bandwidth =['bit','kbit','kibit','mbit','mebit','gbit','gibit','tbit','tebit','bps','kbps','kibps','mbps','mebps','gbps','gibps','tbps','tebps']
-    
-    print(result1)
-    if(result1 != None):
-        if(result1[0].replace('.','',1).isdigit()):
-            if(result1[1] in bandwidth):
-                print("continue normally")
-            
-            else:
-                print("Please provide a proper unit(type)")
-            
-        else:
-            print("usage 85mbit")
-            
-    else:
-        print("no unit was passed along with bandwidth")
+        parameter
+        ---------
+        data_str : str
+            string to match
+        """
+        match = re.fullmatch(r'[0-9]+(\.[0-9]+)?[A-Za-z]+', data_str)
+        return match
 
-delay_type()
-bandwidth_type()
+    def check_delay_type(self, delay_str):
+        """
+        check for proper unit for delay
+
+        parameters
+        ----------
+        delay_str : str
+            delay attribute to be checked
+        """
+        delay_match = self.match_string(delay_str)
+        if not delay_match:
+            raise Exception(
+                "Provide a proper value and unit for delay attribute. "
+            )
+
+        index = 0
+        for i in delay_str:
+            if i.isalpha():
+                index = delay_str.index(i)
+                break
+        delay_type =['s','sec','secs','ms','msec','msecs','us','usec','usecs']
+        unit = delay_str[index:]
+        if unit not in delay_type:
+            raise Exception(
+                "Invalid unit for delay attribute"
+                "Provide a valid unit for delay attribute. "
+            )
+
+
+    def check_bandwidth_type(self, bandwidth_str):
+        """
+        check for proper unit for bandwidth
+
+        parameters
+        ----------
+        bandwidth_str : str
+            bandwidth attribute to be checked
+        """
+        bandwidth_match = self.match_string(bandwidth_str)
+        if not bandwidth_match:
+            raise Exception(
+                    "Provide a proper value and unit for bandwidth attribute. "
+                )
+        index = 0
+        for i in bandwidth_str:
+            if i.isalpha():
+                index = bandwidth_str.index(i)
+                break
+        bandwidth_type = ['bit', 'kbit', 'kibit', 'mbit', 'mibit', 'gbit',
+                            'gibit', 'tbit', 'tibit','bps', 'kbps', 'kibps',
+                            'mbps', 'mibps', 'gbps', 'gibps', 'tbps', 'tibps']
+        unit = bandwidth_str[index:]
+        if unit not in bandwidth_type:
+            raise Exception(
+                "Invalid unit for bandwidth attribute"
+                "Provide a valid unit. "
+            )
